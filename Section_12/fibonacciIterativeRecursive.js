@@ -5,6 +5,25 @@
 /* the pattern of the sequence is that each value is the sum of
    the two previous values; that means that for N=5 -> 2+3 */
 
+function fibonacciIterative(n) { // O(n-2)
+  let arr = [0, 1];
+  for (let i = 2; i < n + 1; i++) {
+    arr.push(arr[i-2] + arr[i-1]);
+  }
+  return arr[n];
+}
+fibonacciIterative(8);
+// should return 21
+
+function fibonacciRecursive(n) { // O(2^n)
+  if (n < 2) {
+    return n;
+  }
+  return fibonacciRecursive(n-1) + fibonacciRecursive(n-2);
+}
+fibonacciRecursive(8);
+// should return 21
+
 // my failed attempt...
 function fibonacciIterative(n) {
   let iteration = 0;
@@ -21,13 +40,4 @@ function fibonacciIterative(n) {
   return index;
 }
 fibonacciIterative(8);
-// should return 21
-
-function fibonacciRecursive(n) {
-  if (n < 2) {
-    return n;
-  }
-  return fibonacciRecursive(n-1) + fibonacciRecursive(n-2);
-}
-fibonacciRecursive(8);
 // should return 21
